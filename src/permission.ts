@@ -10,17 +10,14 @@ router.beforeEach(async (to, from, next) => {
     if (to.path === '/login') {
       next('/')
     } else {
-      console.log(11111);
       
       const hasRoles =  userStore.userInfo.roles?.length > 0
       if (hasRoles) {
-        console.log('2222');
         if (!to.matched.length) {
           from.name ? next({ name: from.name }) : next('/')
         }
         next()
       } else {
-        console.log('33333', from, to);
         try {
           const { roles } = await userStore.getUserInfo()
           const accessRoutes = await permissionStore.generateRoutes(roles)
