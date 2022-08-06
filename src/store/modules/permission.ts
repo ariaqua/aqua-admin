@@ -1,6 +1,7 @@
 import { defineStore } from "pinia"
 import { ref } from 'vue'
-import { constantRoutes, asyncRoutes, Route, Role } from "@/router"
+import { constantRoutes, asyncRoutes } from "@/router"
+import { Route, Role } from '@/types'
 
 function hasPermission (roles: Role[], route: Route) {
   if (!route.meta?.roles) return true
