@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, resolveComponent } from 'vue'
+import { resolveComponent } from 'vue'
 defineProps<{
   icon: string
   iconType?: boolean
