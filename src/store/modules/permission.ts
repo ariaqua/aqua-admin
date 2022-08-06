@@ -13,10 +13,10 @@ function filterAsyncRoutes(routes: Route[], roles: Role[]) {
   routes.forEach(route => {
     const tmp = { ...route }
     if (hasPermission(roles, tmp)) {
-      if (tmp.children) {
+      if (tmp.children?.length) {
         tmp.children = filterAsyncRoutes(tmp.children, roles)
+        tmp.children.length && res.push(tmp)
       }
-      res.push(tmp)
     }
   })
   return res
